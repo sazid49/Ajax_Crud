@@ -96,7 +96,7 @@
     </div>
 <!-- end bootstrap model -->
 <script type="text/javascript">
- $(document).ready(function($){
+ $(document).ready(function(){
 
     $.ajaxSetup({
         headers: {
@@ -146,6 +146,7 @@
             success: function(res){
 
               window.location.reload();
+
            }
         });
        }
@@ -182,7 +183,12 @@
 
     });
 
+
 });
+
+
+
+
 </script>
 </body>
 </html>

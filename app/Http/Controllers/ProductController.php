@@ -28,7 +28,6 @@ class ProductController extends Controller
     //        'price.required'=>'Name is required',
     //     ],
     //    );
-
         Product::query()->create($request->all());
         return response()->json([
             'status'=>'success',
@@ -36,8 +35,6 @@ class ProductController extends Controller
 
 
        }
-
-
        public function allData()
        {
            $data = Product::orderBy('id','DESC')->get();

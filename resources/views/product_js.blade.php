@@ -65,12 +65,29 @@ headers: {
      }
      allData();
 
+     function clearData(){
+        $('#name').val('');
+        $('#price').val('');
+     }
 
    function addData()
     {
         let name =$('#name').val();
         let price =$('#price').val();
+        $.ajax({
+            type:"POST",
+            dataType:"json",
+            data:{name:name,price:price},
+            url:"/add-product/",
+            success:function(data){
+                allData();
+                clearData()
+                window.location.reload();
+                console.log('data added');
+            },error:function(data){
 
+            }
+        })
 
     }
 </script>
