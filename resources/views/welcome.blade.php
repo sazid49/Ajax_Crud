@@ -36,7 +36,7 @@
                         <a href="{{ url('/') }}">
                             <h4>All Produts</h4>
                         </a>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#productmodal"><i
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#productaddmodal"><i
                                 class="fa fa-plus" aria-hidden="true">ADD</i></button>
                     </div>
                     <div class="card-body">
@@ -71,8 +71,9 @@
                         </table>
                         {{-- {!! $data->links() !!} --}}
 
+                        {{-- Add model start --}}
                         <!-- Modal -->
-                        <div class="modal fade" id="productmodal" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="productaddmodal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -93,11 +94,13 @@
                                                 <label for="">Name</label>
                                                 <input type="text" name="name" id="name" class="form-control"
                                                     placeholder="Enter Your Name">
+                                                <span class="text-danger" id="nameError"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Price</label>
                                                 <input type="number" name="price" id="price" class="form-control"
                                                     placeholder="Enter Your Price">
+                                                <span class="text-danger" id="priceError"></span>
                                             </div>
 
                                         </form>
@@ -112,6 +115,55 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- Add model end --}}
+
+
+                        {{-- edit model start --}}
+                        <div class="modal fade" id="producteditmodal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="errormessage m-2">
+
+                                        </div>
+
+                                        <form id="editproductid">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="">Name</label>
+                                                <input type="text" name="name" id="ename"
+                                                    class="form-control" placeholder="Enter Your Name">
+                                                <span class="text-danger" id="enameError"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Price</label>
+                                                <input type="number" name="price" id="eprice"
+                                                    class="form-control" placeholder="Enter Your Price">
+                                                <span class="text-danger" id="epriceError"></span>
+                                            </div>
+                                            <input type="hidden" id="id">
+                                        </form>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" id="update_product"
+                                            onclick="updateP()">Update
+                                            Product</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- edit model end --}}
+
                     </div>
                 </div>
             </div>
